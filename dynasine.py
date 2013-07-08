@@ -2,7 +2,9 @@
 # Basic functions for viewing dynamics of the shifted sine function
 #
 
+
 twopi = 2 * math.pi
+# Define the function that we'll be iterating.
 def sinu(X,Y):
     return ( 0.5 + ( 0.5 * math.sin( twopi * ( X - Y ) ) ) )
 
