@@ -11,6 +11,7 @@ This code chooses random points in the plane, iterates a sine function on these 
 
 http://poibella.org/viz/wp-content/uploads/2012/05/sineshiftSet10000.png
 
+http://www.youtube.com/watch?v=RnGPpjvugZo&feature=share&list=PL937F80DD4ABB4C75
 
 rootmovie.py
 --------------
