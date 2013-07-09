@@ -2,7 +2,9 @@ Mathematical Visualization Menagerie
 ==================================
 
 This is a collection of mathematical visualization functions written in Python using the Matplotlib library.
-For more examples and information please see http://poibella.org/viz
+For more examples and information please visit the blog:
+
+http://poibella.org/viz
 
 dynasine.py
 --------------
