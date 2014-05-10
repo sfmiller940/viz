@@ -1,38 +1,42 @@
+import math as math
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+from itertools import product
+
 #The main function that makes the frames for the movie
 def rootmov( numframes, degree, bins, dpi):
-        import numpy as np
-        from itertools import product
         #Main loop for making frame images
         for frame in range(1,numframes + 1):
                realy = list()
                imagy = list()
                percent = 1.0 * frame / numframes
                # Find the roots of all polynomials of given degree as coefficients vary.
-	       	   for group in product(pathcoeff(percent),repeat=degree):
-                        rootie = roots(group)
+	       for group in product(pathcoeff(percent),repeat=degree):
+                        rootie = np.roots(group)
                         for rooter in list(rootie):
                                 if rooter.imag != 0:
                                         realy.append(rooter.real)
                                         imagy.append(- rooter.imag)
 			   # Make histogram of roots.
-               H, xedges, yedges = histogram2d(realy,imagy, bins=bins)
+               H, xedges, yedges = np.histogram2d(realy,imagy, bins=bins)
                H = np.log1p( 1 / (1 + H ) )
                # Configure and save an image of the histogram.
-               fig=figure( facecolor='k', edgecolor='k')
-               ax=gca()
-               setp(ax, frame_on=True)
-               setp(ax.get_xticklabels(), visible=False)
-               setp(ax.get_yticklabels(), visible=False)
-               setp(ax.get_xticklines(), visible=False)
-               setp(ax.get_yticklines(), visible=False)
-               imshow(H,interpolation='bicubic',extent=[0,1000,0,600], cmap=dynacm( percent ) )
+               fig=plt.figure( facecolor='k', edgecolor='k')
+               ax=plt.gca()
+               plt.setp(ax, frame_on=True)
+               plt.setp(ax.get_xticklabels(), visible=False)
+               plt.setp(ax.get_yticklabels(), visible=False)
+               plt.setp(ax.get_xticklines(), visible=False)
+               plt.setp(ax.get_yticklines(), visible=False)
+               plt.imshow(H,interpolation='bicubic',extent=[0,1000,0,600], cmap=dynacm( percent ) )
                fname='rtpthtest'
                if frame < 10 : fname = fname + "000"
                elif frame < 100 : fname = fname + "00"
                elif frame < 1000 : fname = fname + "0"
-               savefig(fname + str(frame) + '.png',dpi=dpi, facecolor='k', edgecolor='k', bbox_inches='tight')
+               plt.savefig(fname + str(frame) + '.png',dpi=dpi, facecolor='k', edgecolor='k', bbox_inches='tight')
                ax.clear()
-               close(fig)
+               plt.close(fig)
 	       
 
 # Trace a path of coefficients in the complex plane.
