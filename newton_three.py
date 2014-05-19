@@ -12,7 +12,6 @@ ya = -1.5
 yb = 1.5
 
 maxIt = 30 # max iterations allowed
-h = 0.5e-6 # step size for numerical derivative
 eps = 0.5e-4 # max error allowed
 
 frames = 600 # number of frames in movie
@@ -38,7 +37,6 @@ for frame in range(0, 301 ):
             zx = x * (xb - xa) / (imgx - 1) + xa
             z = complex(zx, zy)
             for i in range(maxIt):
-                # complex numerical derivative
                 z = z - f(z) / df(z) # Newton iteration
                 if abs(z) < eps: # stop when close enough to any root
                     cmap = cm.gist_rainbow_r
@@ -49,7 +47,6 @@ for frame in range(0, 301 ):
                 elif abs(z - beta) < eps: # stop when close enough to any root
                     cmap = cm.Paired_r
                     break
-            #image.putpixel((x, y), (i % 4 * 64, i % 16 * 16, i % 32 * 8))
             image.putpixel((x, y),  color_convert( cmap( 1.0 * i / maxIt  ) ) )
 
     fname='three'
