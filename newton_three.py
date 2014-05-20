@@ -1,8 +1,8 @@
 #Newton Fractals
 from PIL import Image
 from pylab import *
-imgx = 768
-imgy = 432
+imgx = 576 #768
+imgy = 324 #432
 image = Image.new("RGB", (imgx, imgy))
 
 # drawing area
@@ -14,16 +14,19 @@ yb = 1.5
 maxIt = 30 # max iterations allowed
 eps = 0.5e-4 # max error allowed
 
-frames = 600 # number of frames in movie
+frames = 300 # number of frames in movie
 
 def color_convert(RGBA):
     return (int( 255 * RGBA[0]), int( 255 * RGBA[1] ), int( 255 * RGBA[2]))
 
+def psi(percent):
+    return 0.5 - ( 0.5 * math.cos( percent * math.pi ) )
+
+
 # draw the fractals
-for frame in range(0, 301 ):
+for frame in range(0, 151 ):
     percent = 1.0 * frame / frames
-    theta = 0.5 - ( 0.5 * math.cos( percent * math.pi ) )
-    gamma = 2.0 * theta * math.pi
+    gamma = 2.0 * math.pi * psi( psi( percent ) ) 
     alpha = complex( 1 - math.cos( gamma ) , math.sin( gamma ) )
     beta = complex( -1 + math.cos( gamma ) , math.sin( gamma ) )
     # put any complex function here to generate a fractal for it!
@@ -49,7 +52,7 @@ for frame in range(0, 301 ):
                     break
             image.putpixel((x, y),  color_convert( cmap( 1.0 * i / maxIt  ) ) )
 
-    fname='three'
+    fname='cospeed'
     if frame < 10 : fname = fname + "000"
     elif frame < 100 : fname = fname + "00"
     elif frame < 1000 : fname = fname + "0"
