@@ -51,9 +51,4 @@ for frame in range(0, 151 ):
                     cmap = cm.Paired_r
                     break
             image.putpixel((x, y),  color_convert( cmap( 1.0 * i / maxIt  ) ) )
-
-    fname='cospeed'
-    if frame < 10 : fname = fname + "000"
-    elif frame < 100 : fname = fname + "00"
-    elif frame < 1000 : fname = fname + "0"
-    image.save(fname + str(frame) + ".png", "PNG")
+    image.save("cospeed{:04}.png".format(frame), "PNG")

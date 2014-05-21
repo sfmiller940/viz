@@ -30,11 +30,7 @@ def rootmov( numframes, degree, bins, dpi):
                plt.setp(ax.get_xticklines(), visible=False)
                plt.setp(ax.get_yticklines(), visible=False)
                plt.imshow(H,interpolation='bicubic',extent=[0,1000,0,600], cmap=dynacm( percent ) )
-               fname='rtpthtest'
-               if frame < 10 : fname = fname + "000"
-               elif frame < 100 : fname = fname + "00"
-               elif frame < 1000 : fname = fname + "0"
-               plt.savefig(fname + str(frame) + '.png',dpi=dpi, facecolor='k', edgecolor='k', bbox_inches='tight')
+               plt.savefig("root_test{:04}.png".format(frame),dpi=dpi, facecolor='k', edgecolor='k', bbox_inches='tight')
                ax.clear()
                plt.close(fig)
 	       

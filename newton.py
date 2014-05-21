@@ -41,9 +41,4 @@ for frame in range(0, frames + 1 ):
                 z = z0
             #image.putpixel((x, y), (i % 4 * 64, i % 16 * 16, i % 32 * 8))
             image.putpixel((x, y),  color_convert( cm.ocean_r( 1.0 * i / maxIt  ) ) )
-
-    fname='testb'
-    if frame < 10 : fname = fname + "000"
-    elif frame < 100 : fname = fname + "00"
-    elif frame < 1000 : fname = fname + "0"
-    image.save(fname + str(frame) + ".png", "PNG")
+    image.save("test{:04}.png".format(frame), "PNG")
