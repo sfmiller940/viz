@@ -35,10 +35,7 @@ for frame in range(0, ( frames / 2 )  + 1 ):
     beta = complex( math.cos( gamma ) ,  - math.sin( gamma ) )
     # put any complex function here to generate a fractal for it!
     def f(z):
-        a = (z - alpha) * (z - beta)
-        b = halfpi * z 
-        b = cmath.cos( b )
-        return ( a * b )
+        return ( (z - alpha) * (z - beta) * cmath.cos( halfpi * z ) )
     def df(z):
         return ( ( (z - beta) * cmath.cos( halfpi * z  ) ) + ( (z - alpha) * cmath.cos( halfpi * z ) ) - ( halfpi * (z - alpha) * (z - beta) * cmath.sin( halfpi * z ) ) )
     for y in range(imgy):
