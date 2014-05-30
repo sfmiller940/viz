@@ -11,6 +11,9 @@ mencoder "mf://@filelist.txt" -ovc lavc -o aegeespirit2.avi
 # Adding sound
 mencoder -ovc copy -audiofile silent.mp3 -oac copy input.avi -o output.avi
 
+#Concatenating
+mencoder -oac copy -ovc copy -forceidx foo1.avi foo2.avi -o foo.avi
+
 #Rotating
 mencoder -vf rotate=2 -o rotate.avi -oac pcm -ovc lavc output.avi
 
