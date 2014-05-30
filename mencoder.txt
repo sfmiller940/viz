@@ -10,6 +10,9 @@ mencoder -ovc copy -audiofile silent.mp3 -oac copy input.avi -o output.avi
 #Rotating
 mencoder -vf rotate=2 -o rotate.avi -oac pcm -ovc lavc output.avi
 
+#Mirror
+mencoder -vf mirror -o rotate.avi -oac pcm -ovc lavc output.avi
+
 #Scaling
 mencoder moonagerot.avi -oac copy -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -vf scale=1024:680 -o moonagescale.avi
 
