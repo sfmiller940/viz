@@ -1,0 +1,16 @@
+# Mencoder scripts
+
+# Encoding images into video
+mencoder mf://rootsdyna*.png -mf fps=12:type=png -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o output.avi
+mencoder mf://rtpth*.png -mf fps=16.66:type=png -ovc xvid -xvidencopts pass=2:bitrate=20312500 -oac copy -o videoxvid2.avi
+
+# Adding sound
+mencoder -ovc copy -audiofile silent.mp3 -oac copy input.avi -o output.avi
+
+#Rotating
+mencoder -vf rotate=2 -o rotate.avi -oac pcm -ovc lavc output.avi
+
+#Scaling
+mencoder moonagerot.avi -oac copy -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -vf scale=1024:680 -o moonagescale.avi
+
+
