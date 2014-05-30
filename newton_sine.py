@@ -30,33 +30,34 @@ def psi(percent):
 # draw the fractals
 for frame in range(0, ( frames / 2 )  + 1 ):
     percent = 1.0 * frame / frames
-    gamma = math.pi * psi( percent ) #psi( psi( percent ) )
+    # parametrized paths for alpha and beta
+    gamma = math.pi * psi( percent )
     alpha = complex( - math.cos( gamma ) , math.sin( gamma ) )
     beta = complex( math.cos( gamma ) ,  - math.sin( gamma ) )
-    # put any complex function here to generate a fractal for it!
+    # parametrized function of z and its derivative
     def f(z):
         return ( (z - alpha) * (z - beta) * cmath.cos( halfpi * z ) )
     def df(z):
         return ( ( (z - beta) * cmath.cos( halfpi * z  ) ) + ( (z - alpha) * cmath.cos( halfpi * z ) ) - ( halfpi * (z - alpha) * (z - beta) * cmath.sin( halfpi * z ) ) )
+    # loop through mesh
     for y in range(imgy):
         zy = y * (yb - ya) / (imgy - 1) + ya
         for x in range(imgx):
             zx = x * (xb - xa) / (imgx - 1) + xa
-            z = complex(zx, zy)
+            z = complex(zx, zy) # mesh point
+            cmap = cm.PRGn_r # default colormap
             for i in range(maxIt):
-                #z = complex( round(z.real, 3), round(z.imag, 3)   )
                 z =  z - f(z) / df(z) # Newton iteration
-                cmap = cm.PRGn_r 
-                if ( abs( z - round(z.real) ) < eps ) and ( int( round(z.real) ) & 0x1 ) : #Stop when close enough to odd integer.
+                if ( abs( z - round(z.real) ) < eps ) and ( int( round(z.real) ) & 0x1 ) : # if z is close to odd integer.
                     cmap = cm.gist_ncar_r
                     break
-                elif abs(z - alpha) < eps: # stop when close enough to any root
+                elif abs(z - alpha) < eps: # if z is close to alpha
                     cmap = cm.jet
                     break
-                elif abs(z - beta) < eps: # stop when close enough to any root
+                elif abs(z - beta) < eps: # if z is close to beta
                     cmap = cm.jet_r
                     break
-                elif abs(z) > 100:
+                elif abs(z) > 100: # if z is big
                     break
-            image.putpixel((x, y),  color_convert( cmap( 1.0 * i / maxIt  ) ) )
-    image.save("newsine{:04}.png".format(frame), "PNG")
+            image.putpixel((x, y),  color_convert( cmap( 1.0 * i / maxIt  ) ) ) # color z's pixel
+    image.save("newsine{:04}.png".format(frame), "PNG") # save image
