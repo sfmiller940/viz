@@ -30,7 +30,7 @@ def psi(percent):
 # draw the fractals
 for frame in range(0, ( frames / 2 )  + 1 ):
     percent = 1.0 * frame / frames
-    gamma = math.pi * psi( psi( percent ) )
+    gamma = math.pi * percent #psi( psi( percent ) )
     alpha = complex( - math.cos( gamma ) , math.sin( gamma ) )
     beta = complex( math.cos( gamma ) ,  - math.sin( gamma ) )
     # put any complex function here to generate a fractal for it!
