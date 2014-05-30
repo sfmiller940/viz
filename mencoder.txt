@@ -4,6 +4,10 @@
 mencoder mf://rootsdyna*.png -mf fps=12:type=png -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o output.avi
 mencoder mf://rtpth*.png -mf fps=16.66:type=png -ovc xvid -xvidencopts pass=2:bitrate=20312500 -oac copy -o videoxvid2.avi
 
+#Encoding from reversed list
+ls -r *.png >> filelist.txt
+mencoder "mf://@filelist.txt" -ovc lavc -o aegeespirit2.avi
+
 # Adding sound
 mencoder -ovc copy -audiofile silent.mp3 -oac copy input.avi -o output.avi
 
