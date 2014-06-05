@@ -31,9 +31,9 @@ for frame in range(0, frames ):
     percent = 1.0 * frame / frames
     # parametrized paths for alpha and beta
     theta = math.pi * psi( percent )
-    gamma = cmath.rect( 2 * math.sin( math.pi * theta ) , 3 * math.pi * theta  )
-    alpha = cmath.rect( math.sin( theta * math.pi * 4) , 2 * math.pi * theta  )
-    beta = cmath.rect( 2 * math.sin( theta * math.pi * 3) , - 4 * math.pi * theta  )
+    gamma = cmath.rect( 2 * math.sin( theta ) , 3 * theta  )
+    alpha = cmath.rect( math.sin( theta  * 4 ) , 2 * theta  )
+    beta = cmath.rect( 2 * math.sin( theta * 3 ) , - 4 * theta  )
     # parametrized function of z and its derivative
     def f(z):
         return ( (z - alpha) * (z - beta) * cmath.cos( halfpi * gamma * z ) )
