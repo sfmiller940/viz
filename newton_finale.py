@@ -18,7 +18,7 @@ yb = 2.5
 maxIt = 40 # max iterations allowed
 eps = 1.0e-3 # max error allowed
 
-frames = 100 # number of frames in movie
+frames = 1200 # number of frames in movie
 
 def color_convert(RGBA):
     return (int( 255 * RGBA[0]), int( 255 * RGBA[1] ), int( 255 * RGBA[2]))
