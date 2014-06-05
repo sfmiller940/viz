@@ -18,7 +18,7 @@ yb = 1.35
 maxIt = 40 # max iterations allowed
 eps = 1.0e-3 # max error allowed
 
-frames = 60 # number of frames in movie
+frames = 100 # number of frames in movie
 
 def color_convert(RGBA):
     return (int( 255 * RGBA[0]), int( 255 * RGBA[1] ), int( 255 * RGBA[2]))
@@ -30,10 +30,10 @@ def psi(percent):
 for frame in range(0, frames ):
     percent = 1.0 * frame / frames
     # parametrized paths for alpha and beta
-    gamma = 1 #2 * percent
     theta = math.pi * psi( percent )
-    alpha = cmath.rect( 2 * math.sin( percent * math.pi * 4) , 2 * math.pi * percent  )
-    beta = cmath.rect( math.sin( percent * math.pi * 3) , - 4 * math.pi * percent  )
+    gamma = 2 * theta
+    alpha = cmath.rect( math.sin( theta * math.pi * 4) , 2 * math.pi * theta  )
+    beta = cmath.rect( 2 * math.sin( theta * math.pi * 3) , - 4 * math.pi * theta  )
     # parametrized function of z and its derivative
     def f(z):
         return ( (z - alpha) * (z - beta) * cmath.cos( halfpi * gamma * z ) )
