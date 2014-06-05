@@ -5,15 +5,15 @@ import cmath
 
 halfpi =  math.pi / 2 
 
-imgx = 900 #576
-imgy = 405 #324
+imgx = 700 #576
+imgy = 500 #324
 image = Image.new("RGB", (imgx, imgy))
 
 # drawing area
-xa = -3.0
-xb = 3.0
-ya = -1.35
-yb = 1.35
+xa = -3.5
+xb = 3.5
+ya = -2.5
+yb = 2.5
 
 maxIt = 40 # max iterations allowed
 eps = 1.0e-3 # max error allowed
