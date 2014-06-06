@@ -18,7 +18,7 @@ yb = 2.5
 maxIt = 35 # max iterations allowed
 eps = 1.0e-3 # max error allowed
 
-frames = 100 # number of frames in movie
+frames = 1800 # number of frames in movie
 
 def color_convert(RGBA):
     return (int( 255 * RGBA[0]), int( 255 * RGBA[1] ), int( 255 * RGBA[2]))
@@ -54,10 +54,10 @@ for frame in range(0, frames + 1 ):
                     cmap = cm.terrain
                     break
                 elif abs(z - alpha) < eps: # if z is close to alpha
-                    cmap = cm.gist_ncar_r
+                    cmap = cm.hsv
                     break
                 elif abs(z - beta) < eps: # if z is close to beta
-                    cmap = cm.hsv
+                    cmap = cm.gist_ncar_r
                     break
                 elif abs(z - delta) < eps: # if z is close to beta
                     cmap = cm.Paired_r
