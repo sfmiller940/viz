@@ -15,7 +15,7 @@ xb = 3.5
 ya = -2.5
 yb = 2.5
 
-maxIt = 35 # max iterations allowed
+maxIt = 30 # max iterations allowed
 eps = 1.0e-3 # max error allowed
 
 frames = 1800 # number of frames in movie
@@ -31,7 +31,7 @@ for frame in range(0, frames + 1 ):
     percent = 1.0 * frame / frames
     # parametrized paths for alpha and beta
     theta = math.pi * psi( percent )
-    gamma = cmath.rect( 2 * math.sin( 2 * theta ) , - 4 * theta  )
+    gamma = cmath.rect( 2 * math.sin( 2 * theta ) , 2 * theta * math.sin( 2 * theta )  )
     alpha = cmath.rect( 2 * math.sin( theta  * 5 ) , 2 * theta  )
     beta = cmath.rect( 2 * math.sin( theta * 4 ) , - 3 * theta  )
     delta = cmath.rect( 2 * math.sin( theta * 3 ) , 4 * theta  )
@@ -39,7 +39,11 @@ for frame in range(0, frames + 1 ):
     def f(z):
         return ( (z - alpha) * (z - beta) * (z - delta) * cmath.cos( halfpi * gamma * z ) )
     def df(z):
-        return ( ( (z - alpha) * (z - beta) * cmath.cos( halfpi * gamma * z ) ) + ( (z - beta) * ( z - delta) * cmath.cos( halfpi * gamma * z  ) ) + ( (z - alpha) * ( z - delta) * cmath.cos( halfpi * gamma * z ) ) - ( halfpi * gamma * (z - alpha) * (z - beta) * ( z - delta) * cmath.sin( halfpi * gamma * z ) ) )
+        za = z - alpha
+        zb = z - beta
+        zd = z - delta
+        cosz = cmath.cos( halfpi * gamma * z )
+        return ( ( za * zb * cosz ) + ( za * zd * cosz ) + ( zb * zd * cosz ) - ( halfpi * gamma * za * zb * zd * cmath.sin( halfpi * gamma * z ) ) )
     # loop through mesh
     for y in range(imgy):
         zy = y * (yb - ya) / (imgy - 1) + ya
