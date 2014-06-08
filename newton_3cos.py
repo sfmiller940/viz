@@ -18,7 +18,7 @@ yb = 2.16
 maxIt = 30 # max iterations allowed
 eps = 1.0e-3 # max error allowed
 
-frames = 50 # number of frames in movie
+frames = 1500 # number of frames in movie
 
 def color_convert(RGBA):
     return (int( 255 * RGBA[0]), int( 255 * RGBA[1] ), int( 255 * RGBA[2]))
@@ -34,7 +34,7 @@ for frame in range(0, frames + 1 ):
     alpha = cmath.rect( math.sin( theta  * 5 ) , 2 * theta  )
     beta = cmath.rect(  math.sin( theta * 4 ) , - 3 * theta  )
     gamma = cmath.rect( math.sin( theta * 3 ) , 4 * theta  )
-    delta = cmath.rect( 1.5 * math.sin( theta ) , halfpi - 2 * theta )
+    delta = cmath.rect( 1.5 * math.sin( theta ) , 2 * theta - halfpi )
     # parametrized function of z and its derivative
     def f():
         return ( ( z - delta ) * cmath.cos( halfpi * alphaz ) * cmath.cos( halfpi * betaz ) * cmath.cos( halfpi * gammaz ) )
@@ -59,13 +59,13 @@ for frame in range(0, frames + 1 ):
                     cmap = cm.terrain
                     break
                 elif ( abs( alphaz - round(alphaz.real) ) < eps ) and ( int( round(alphaz.real) ) & 0x1 ) : # if z is close to odd integer.
-                    cmap = cm.hsv
+                    cmap = cm.gist_ncar_r
                     break
                 elif ( abs( betaz - round(betaz.real) ) < eps ) and ( int( round(betaz.real) ) & 0x1 ) : # if z is close to alpha
-                    cmap = cm.Paired_r
+                    cmap = cm.hsv
                     break
                 elif ( abs( gammaz - round(gammaz.real) ) < eps ) and ( int( round(gammaz.real) ) & 0x1 ) : # if z is close to beta
-                    cmap = cm.gist_ncar_r
+                    cmap = cm.Paired_r
                     break
                 elif abs(z) > 1000: # if z is big
                     break
