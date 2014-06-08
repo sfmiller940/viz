@@ -27,10 +27,10 @@ def psi(percent):
     return 0.5 - ( 0.5 * math.cos( percent * math.pi ) )
 
 # draw the fractals
-for frame in range(0, frames + 1 ):
+for frame in range(237, frames + 1 ):
     percent = 1.0 * frame / frames
     # parametrized paths for alpha and beta
-    theta = math.pi * percent #psi( percent )
+    theta = math.pi * psi( percent )
     alpha = cmath.rect( math.sin( theta  * 5 ) , 2 * theta  )
     beta = cmath.rect(  math.sin( theta * 4 ) , - 3 * theta  )
     gamma = cmath.rect( math.sin( theta * 3 ) , 4 * theta  )
@@ -67,7 +67,7 @@ for frame in range(0, frames + 1 ):
                 elif ( abs( gammaz - round(gammaz.real) ) < eps ) and ( int( round(gammaz.real) ) & 0x1 ) : # if z is close to beta
                     cmap = cm.Paired_r
                     break
-                elif abs(z) > 1000: # if z is big
+                elif abs(z) > 100: # if z is big
                     break
             image.putpixel((x, y),  color_convert( cmap( 1.0 * i / maxIt  ) ) ) # color z's pixel
     image.save("3cos{:04}.png".format(frame), "PNG") # save image
