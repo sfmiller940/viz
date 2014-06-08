@@ -18,7 +18,7 @@ yb = 2.5
 maxIt = 30 # max iterations allowed
 eps = 1.0e-3 # max error allowed
 
-frames = 100 # number of frames in movie
+frames = 50 # number of frames in movie
 
 def color_convert(RGBA):
     return (int( 255 * RGBA[0]), int( 255 * RGBA[1] ), int( 255 * RGBA[2]))
@@ -27,7 +27,7 @@ def psi(percent):
     return 0.5 - ( 0.5 * math.cos( percent * math.pi ) )
 
 # draw the fractals
-for frame in range(30, frames + 1 ):
+for frame in range(0, frames + 1 ):
     percent = 1.0 * frame / frames
     # parametrized paths for alpha and beta
     theta = math.pi * psi( percent )
@@ -56,10 +56,10 @@ for frame in range(30, frames + 1 ):
                 gammaz = gamma * z
                 z =  z - f() / df() # Newton iteration
                 if abs( z - delta ) < eps: # if z is close to beta
-                    cmap = cm.hsv
+                    cmap = cm.terrain
                     break
                 elif ( abs( alphaz - round(alphaz.real) ) < eps ) and ( int( round(alphaz.real) ) & 0x1 ) : # if z is close to odd integer.
-                    cmap = cm.terrain
+                    cmap = cm.hsv
                     break
                 elif ( abs( betaz - round(betaz.real) ) < eps ) and ( int( round(betaz.real) ) & 0x1 ) : # if z is close to alpha
                     cmap = cm.Paired_r
