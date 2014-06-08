@@ -5,15 +5,15 @@ import cmath
 
 halfpi =  math.pi / 2 
 
-imgx = 700 #576
-imgy = 500 #324
+imgx = 768 #576
+imgy = 432 #324
 image = Image.new("RGB", (imgx, imgy))
 
 # drawing area
-xa = -3.5
-xb = 3.5
-ya = -2.5
-yb = 2.5
+xa = -3.84
+xb = 3.84
+ya = -2.16
+yb = 2.16
 
 maxIt = 30 # max iterations allowed
 eps = 1.0e-3 # max error allowed
@@ -31,10 +31,10 @@ for frame in range(0, frames + 1 ):
     percent = 1.0 * frame / frames
     # parametrized paths for alpha and beta
     theta = math.pi * psi( percent )
-    alpha = cmath.rect( 2 * math.sin( theta  * 5 ) , 2 * theta  )
-    beta = cmath.rect(  2 * math.sin( theta * 4 ) , - 3 * theta  )
-    gamma = cmath.rect( 2 * math.sin( theta * 3 ) , 4 * theta  )
-    delta = cmath.rect( 2 * math.sin( theta ) , halfpi - 2 * theta )
+    alpha = cmath.rect( math.sin( theta  * 5 ) , 2 * theta  )
+    beta = cmath.rect(  math.sin( theta * 4 ) , - 3 * theta  )
+    gamma = cmath.rect( math.sin( theta * 3 ) , 4 * theta  )
+    delta = cmath.rect( 1.5 * math.sin( theta ) , halfpi - 2 * theta )
     # parametrized function of z and its derivative
     def f():
         return ( ( z - delta ) * cmath.cos( halfpi * alphaz ) * cmath.cos( halfpi * betaz ) * cmath.cos( halfpi * gammaz ) )
