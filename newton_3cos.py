@@ -30,7 +30,7 @@ def psi(percent):
 for frame in range(0, frames + 1 ):
     percent = 1.0 * frame / frames
     # parametrized paths for alpha and beta
-    theta = math.pi * psi( percent )
+    theta = math.pi * percent #psi( percent )
     alpha = cmath.rect( math.sin( theta  * 5 ) , 2 * theta  )
     beta = cmath.rect(  math.sin( theta * 4 ) , - 3 * theta  )
     gamma = cmath.rect( math.sin( theta * 3 ) , 4 * theta  )
