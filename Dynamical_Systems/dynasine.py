@@ -7,6 +7,7 @@ twopi = 2 * math.pi
 # Define the function that we'll be iterating.
 def sinu(X,Y):
     return ( 0.5 + ( 0.5 * math.sin( twopi * ( X - Y ) ) ) )
+    #return Y * X * ( 1 - X) 
 
 #Make dynamic sine wave
 def dynsine( mincomp, maxcomp, npoints, Xshift, Ymin, Ymax, bins, dpi, colormaps):
