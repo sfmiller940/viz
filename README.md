@@ -15,4 +15,4 @@ This is a collection of mathematical visualization functions written in Python u
 
 * __mencoder.txt__ - A short list of helpful mencoder commands.
 
-Also check out our Paper.js and Processing2 repos!
+Also check out our [Paper.js repo](https://github.com/sfmiller940/paperJS) and [Processing2 repo](https://github.com/sfmiller940/processing) for experiments with JavaScript!
