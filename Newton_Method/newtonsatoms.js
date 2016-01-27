@@ -17,9 +17,9 @@ window.onload = function(){
 	var zalpha, zbeta,zgamma;
 		
 	// Zero points. Clean up into an object.
-	var alpha = math.complex(Math.random(), Math.random());
-	var beta = math.complex(Math.random(), Math.random());
-	var gamma = math.complex(Math.random(), Math.random());
+	var alpha = math.complex(Math.random(), height * Math.random() / width );
+	var beta = math.complex(Math.random(), height * Math.random() / width );
+	var gamma = math.complex(Math.random(), height * Math.random() / width );
 	var alphaD = 2 * Math.PI * Math.random();
 	var betaD = 2 * Math.PI * Math.random();
 	var gammaD = 2 * Math.PI * Math.random();
