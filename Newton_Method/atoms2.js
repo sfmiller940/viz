@@ -81,7 +81,7 @@ window.onload = function(){
 	canvasInit();
 	window.onresize = canvasInit;
 
-	var maxIt = 16;
+	var maxIt = 12;
 	var eps = 0.005;
 	var zalpha, zbeta,zgamma;
 		
@@ -103,12 +103,13 @@ window.onload = function(){
 				}
 				this.loc = newpoint;
 				
-				this.fillHue = (this.fillHue + 1) % 360;
+				this.fillHue = (this.fillHue + 4) % 360;
 				
 			};
 	}
 	
-	var zeroPts = [ new zeroPt(0), new zeroPt(120), new zeroPt(240) ];
+	var randomHue = 360 * Math.random();
+	var zeroPts = [ new zeroPt( randomHue ), new zeroPt( ( randomHue + 120 ) % 360 ), new zeroPt( ( randomHue + 240 ) % 360 ) ];
 		
 	var F = function(){
 		return math.multiply(zalpha,math.multiply(zbeta, zgamma));
