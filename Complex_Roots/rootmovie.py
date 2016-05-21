@@ -18,7 +18,7 @@ def rootmov( numframes, degree, bins, dpi):
                                 if rooter.imag != 0:
                                         realy.append(rooter.real)
                                         imagy.append(- rooter.imag)
-			   # Make histogram of roots.
+               # Make histogram of roots.
                H, xedges, yedges = np.histogram2d(realy,imagy, bins=bins)
                H = np.log1p( 1 / (1 + H ) )
                # Configure and save an image of the histogram.
