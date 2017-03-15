@@ -1,6 +1,6 @@
 ### Mathematical Visualization Menagerie
 
-This is a collection of mathematical visualization functions written in Python using the [Matplotlib](https://github.com/matplotlib/matplotlib) library. Please watch [our greatest hits on youtube](https://www.youtube.com/watch?v=DMxHObcsYJ0&list=PLCHiRRgthTUUCQvu0Vg37iVqW9s7-cJyR) and visit [the VIZ blog](http://poibella.org/viz) for more examples and information.
+This is a collection of mathematical visualization functions written in Python using the [Matplotlib](https://github.com/matplotlib/matplotlib) library. Please watch [our greatest hits on youtube](https://www.youtube.com/watch?v=DMxHObcsYJ0&list=PLCHiRRgthTUUCQvu0Vg37iVqW9s7-cJyR) and visit [the VIZ blog](http://poibella.org) for more examples and information.
 
 * __Complex Roots__ ([video](http://www.youtube.com/watch?v=DMxHObcsYJ0&list=PLCHiRRgthTUVuJeDDvRP0m3QgrZAj0qN2)) - Histograms of the roots of complex polynomials with varying coefficients.
 
